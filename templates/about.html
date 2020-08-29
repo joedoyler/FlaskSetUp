@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<h2>{{ page_title }}</h2>
+
+{% for member in company %}
+
+{% if loop.index % 2 !=0  %}
+    <h2> <a href="/about/{{ member.url }}"> {{ loop.index }}. {{ member.name }} </a></h2>
+
+    <p>{{ loop.index }}. {{ member.description }}</p>
+
+    <p>{{ loop.index }}. {{ member.image_source }}</p>
+
+{% else %}
+    <h2> <a href="/about/{{ member.url }}"> {{ loop.index }}. {{ member.name }}</a></h2>
+    <h2> <a href="/about/{{ member.name|replace('','-')|lower }}"> {{ loop.index }}. {{ member.name }}</a></h2>
+
+    <p>{{ loop.index }}. {{ member.description }}</p>
+
+    <p>{{ loop.index }}. {{ member.image_source }}</p>
+
+{% endif %}
+
+{% if loop.index != loop.length %}
+<hr class="featurette-divider">
+{% endif %}
+
+{% endfor %}
+
+
+
+{% endblock %}
